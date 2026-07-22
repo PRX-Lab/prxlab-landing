@@ -254,16 +254,14 @@ export default function HomePage() {
 
       {/* HOSPEDAGEM */}
       <Section id="hospedagem">
-        <Reveal>
-          <PixelIcon type="hosting" size={36} />
-          <div className="mt-4"><Tag>HOSPEDAGEM GERENCIADA</Tag></div>
-          <RevealText as="h2" className="mt-5 text-3xl font-light tracking-tight text-foreground sm:text-4xl md:text-[2.75rem] md:leading-[1.1]">
-            {"Desenvolvemos, publicamos\ne cuidamos do seu ambiente."}
-          </RevealText>
-        </Reveal>
-        <div className="mt-12 grid gap-8 lg:grid-cols-2 lg:gap-12">
+        <div className="grid gap-8 lg:grid-cols-2 lg:gap-12">
           <Reveal>
-            <p className="text-base leading-relaxed text-muted-foreground">
+            <PixelIcon type="hosting" size={36} />
+            <div className="mt-4"><Tag>HOSPEDAGEM GERENCIADA</Tag></div>
+            <RevealText as="h2" className="mt-5 text-3xl font-light tracking-tight text-foreground sm:text-4xl md:text-[2.75rem] md:leading-[1.1]">
+              {"Desenvolvemos, publicamos\ne cuidamos do seu ambiente."}
+            </RevealText>
+            <p className="mt-5 text-base leading-relaxed text-muted-foreground">
               A PRXLab pode publicar e hospedar o seu projeto, reduzindo a complexidade técnica do dia a
               dia — com monitoramento contínuo de disponibilidade.
             </p>

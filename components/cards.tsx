@@ -34,16 +34,18 @@ export function LandingPlanCard({ plan }: { plan: LandingPlan }) {
   return (
     <BentoCard
       className={cn(
-        "relative flex h-full flex-col p-6 transition-transform duration-300",
-        plan.recommended && "border-primary/30 bg-secondary/50 shadow-xl shadow-primary/10 lg:scale-105",
+        "flex flex-col p-6",
+        plan.recommended && "border-primary/30 bg-secondary/50 shadow-xl shadow-primary/10",
       )}
+      badge={
+        plan.recommended && (
+          <span className="inline-flex items-center gap-1 rounded-full bg-primary px-3 py-1 text-xs font-medium whitespace-nowrap text-primary-foreground shadow-md shadow-primary/30">
+            <Star className="size-3 fill-current" />
+            Recomendada
+          </span>
+        )
+      }
     >
-      {plan.recommended && (
-        <span className="absolute -top-3 left-6 inline-flex items-center gap-1 rounded-full bg-primary px-3 py-1 text-xs font-medium text-primary-foreground shadow-md shadow-primary/30">
-          <Star className="size-3 fill-current" />
-          Recomendada
-        </span>
-      )}
       <span
         className={cn(
           "grid size-11 place-items-center rounded-xl border",
@@ -52,11 +54,11 @@ export function LandingPlanCard({ plan }: { plan: LandingPlan }) {
       >
         <Icon className="size-5" />
       </span>
-      <h3 className="mt-4 text-xl font-semibold text-foreground">{plan.name}</h3>
-      <p className="mt-2 inline-flex w-fit items-center rounded-full bg-secondary px-2.5 py-1 font-mono text-[10px] uppercase tracking-wider text-secondary-foreground">
+      <h3 className="mt-4 min-h-7 text-xl font-semibold text-foreground">{plan.name}</h3>
+      <p className="mt-2 inline-flex w-fit items-center whitespace-nowrap rounded-full bg-secondary px-2.5 py-1 font-mono text-[10px] uppercase tracking-wider text-secondary-foreground">
         {plan.tagline}
       </p>
-      <p className="mt-4 text-sm leading-relaxed text-muted-foreground">{plan.description}</p>
+      <p className="mt-4 min-h-18 text-sm leading-relaxed text-muted-foreground">{plan.description}</p>
 
       <div className="mt-6 border-t border-border pt-5">
         <p className="text-xs font-semibold uppercase tracking-wider text-foreground">Inclui</p>
@@ -88,18 +90,20 @@ export function HostingCard({ plan }: { plan: HostingPlan }) {
   return (
     <BentoCard
       className={cn(
-        "relative flex h-full flex-col p-6",
-        plan.recommended && "border-foreground/20 bg-secondary/40",
+        "flex flex-col p-6",
+        plan.recommended && "border-primary/30 bg-secondary/50 shadow-xl shadow-primary/10",
       )}
+      badge={
+        plan.recommended && (
+          <span className="inline-flex items-center gap-1 rounded-full bg-primary px-3 py-1 text-xs font-medium whitespace-nowrap text-primary-foreground shadow-md shadow-primary/30">
+            <Star className="size-3 fill-current" />
+            Recomendado
+          </span>
+        )
+      }
     >
-      {plan.recommended && (
-        <span className="absolute -top-3 left-6 inline-flex items-center gap-1 rounded-full bg-primary px-3 py-1 text-xs font-medium text-primary-foreground">
-          <Star className="size-3" />
-          Recomendado
-        </span>
-      )}
-      <h3 className="text-xl font-semibold text-foreground">{plan.name}</h3>
-      <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{plan.summary}</p>
+      <h3 className="min-h-7 text-xl font-semibold text-foreground">{plan.name}</h3>
+      <p className="mt-2 min-h-11 text-sm leading-relaxed text-muted-foreground">{plan.summary}</p>
       <ul className="mt-6 space-y-2">
         {plan.features.map((f) => (
           <li key={f} className="flex gap-2 text-sm text-muted-foreground">

@@ -7,12 +7,15 @@ type BentoCardProps = {
   children: React.ReactNode
   className?: string
   as?: React.ElementType
+  badge?: React.ReactNode
   [key: string]: unknown
 }
 
 // Card with a subtle radial glow that follows the pointer on hover — the
 // signature hover treatment shared across every card grid on the site.
-export function BentoCard({ children, className, as: Tag = "div", ...props }: BentoCardProps) {
+// `badge` renders centered on the card's own top border (outside the card's
+// own overflow-hidden box), for the classic "Recomendado" ribbon look.
+export function BentoCard({ children, className, as: Tag = "div", badge, ...props }: BentoCardProps) {
   const handleMouse = (e: React.MouseEvent<HTMLDivElement>) => {
     const el = e.currentTarget
     const rect = el.getBoundingClientRect()
@@ -21,23 +24,30 @@ export function BentoCard({ children, className, as: Tag = "div", ...props }: Be
   }
 
   return (
-    <Tag
-      onMouseMove={handleMouse}
-      className={cn(
-        "group relative overflow-hidden rounded-2xl border border-border bg-card transition-colors duration-300 hover:border-foreground/15",
-        className,
+    <div className="relative h-full">
+      {badge && (
+        <div className="pointer-events-none absolute inset-x-0 top-0 z-20 flex justify-center">
+          <div className="pointer-events-auto -translate-y-1/2">{badge}</div>
+        </div>
       )}
-      {...props}
-    >
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
-        style={{
-          background:
-            "radial-gradient(400px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), color-mix(in oklch, var(--foreground) 5%, transparent), transparent 60%)",
-        }}
-      />
-      <div className="relative z-10 h-full">{children}</div>
-    </Tag>
+      <Tag
+        onMouseMove={handleMouse}
+        className={cn(
+          "group relative h-full overflow-hidden rounded-2xl border border-border bg-card transition-colors duration-300 hover:border-foreground/15",
+          className,
+        )}
+        {...props}
+      >
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+          style={{
+            background:
+              "radial-gradient(400px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), color-mix(in oklch, var(--foreground) 5%, transparent), transparent 60%)",
+          }}
+        />
+        <div className="relative z-10 h-full">{children}</div>
+      </Tag>
+    </div>
   )
 }
