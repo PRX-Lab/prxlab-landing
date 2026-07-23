@@ -73,7 +73,10 @@ export function SiteHeader() {
           aria-label="Navegação principal"
           className="flex items-center justify-between gap-4 rounded-2xl border border-border bg-background/40 px-4 py-2.5 shadow-lg shadow-black/4 backdrop-blur-xl sm:px-5"
         >
-          <Link href="/" className="rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
+          <Link
+            href="/"
+            className="inline-flex items-center rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+          >
             <Logo />
             <span className="sr-only">PRXLab — página inicial</span>
           </Link>
