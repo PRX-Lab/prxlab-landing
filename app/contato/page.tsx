@@ -1,12 +1,12 @@
 import type { Metadata } from "next"
 import { Mail, MessageCircle, Clock, MapPin } from "lucide-react"
 import { PageHero } from "@/components/page-hero"
-import { Section } from "@/components/section"
+import { Section, SectionHeading } from "@/components/section"
 import { Reveal } from "@/components/reveal"
+import { RevealText } from "@/components/reveal-text"
 import { BentoCard } from "@/components/bento-card"
 import { ContactForm } from "@/components/contact-form"
 import { Faq } from "@/components/faq"
-import { SectionHeading } from "@/components/section"
 import { siteConfig } from "@/lib/site"
 import { faqs } from "@/lib/content"
 
@@ -50,11 +50,13 @@ export default function ContatoPage() {
         description="Conte o que a sua empresa precisa. Retornamos com as próximas etapas e uma proposta alinhada ao escopo e aos objetivos do negócio."
       />
 
-      <Section>
+      <Section className="prx-wash-secondary">
         <div className="grid gap-10 lg:grid-cols-[1fr_1.1fr] lg:gap-16">
           <div>
-            <Reveal>
-              <h2 className="text-2xl font-semibold tracking-tight text-foreground">Canais de atendimento</h2>
+            <RevealText as="h2" className="text-2xl font-semibold tracking-tight text-foreground">
+              Canais de atendimento
+            </RevealText>
+            <Reveal delay={80}>
               <p className="mt-3 text-base leading-relaxed text-muted-foreground">
                 Prefere falar direto? Use um dos canais abaixo. Se preferir, preencha o formulário e nós
                 entramos em contato.
@@ -99,20 +101,22 @@ export default function ContatoPage() {
           </div>
 
           <Reveal delay={120}>
-            <div className="rounded-3xl border border-border bg-card p-6 sm:p-8">
-              <h2 className="text-xl font-semibold text-foreground">Solicitar orçamento</h2>
+            <BentoCard className="p-6 sm:p-8">
+              <RevealText as="h2" className="text-xl font-semibold text-foreground">
+                Solicitar orçamento
+              </RevealText>
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
                 Preencha os campos abaixo com o máximo de detalhes possível.
               </p>
               <div className="mt-6">
                 <ContactForm />
               </div>
-            </div>
+            </BentoCard>
           </Reveal>
         </div>
       </Section>
 
-      <Section className="border-t border-border bg-muted/30">
+      <Section>
         <SectionHeading
           eyebrow="Dúvidas frequentes"
           title="Perguntas comuns antes de começar"

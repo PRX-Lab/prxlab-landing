@@ -16,16 +16,12 @@ export function CtaSection({
   secondaryLabel?: string
 }) {
   return (
-    <section className="px-4 py-20 sm:px-6 sm:py-24 lg:px-8">
+    <section className="px-4 py-11 sm:px-6 sm:py-13 lg:px-8">
       <div className="mx-auto max-w-7xl">
         <Reveal className="relative overflow-hidden rounded-3xl border border-border bg-card px-6 py-16 sm:px-12 sm:py-20">
           <div
             aria-hidden="true"
-            className="absolute -bottom-32 left-1/2 h-64 w-[36rem] -translate-x-1/2 rounded-full bg-primary/20 blur-3xl"
-          />
-          <div
-            aria-hidden="true"
-            className="absolute -top-24 right-0 h-56 w-56 rounded-full bg-accent/60 blur-3xl"
+            className="prx-blob-a absolute -bottom-40 left-1/2 h-72 w-2xl -translate-x-1/2 rounded-full bg-primary/12 blur-[100px]"
           />
           <div className="relative mx-auto max-w-2xl text-center">
             <RevealText as="h2" className="text-balance text-3xl font-light tracking-tight text-foreground sm:text-4xl">

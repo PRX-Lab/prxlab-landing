@@ -21,7 +21,7 @@ export default function ProdutosPage() {
         description="Além de projetos sob medida, desenvolvemos e mantemos produtos próprios em produção. Esta página cresce conforme novos produtos são lançados."
       />
 
-      <Section>
+      <Section className="prx-wash-secondary">
         <div className="space-y-8">
           {products.map((product) => (
             <Reveal key={product.name}>
@@ -31,7 +31,7 @@ export default function ProdutosPage() {
         </div>
       </Section>
 
-      <Section className="border-t border-border">
+      <Section>
         <Reveal>
           <div className="rounded-2xl border border-dashed border-border bg-card/50 p-10 text-center">
             <SectionHeading

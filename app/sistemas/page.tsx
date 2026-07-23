@@ -72,7 +72,7 @@ export default function SistemasPage() {
       </PageHero>
 
       {/* Categorias */}
-      <Section>
+      <Section className="prx-wash-secondary">
         <Reveal>
           <SectionHeading
             eyebrow="Categorias"
@@ -99,7 +99,7 @@ export default function SistemasPage() {
       </Section>
 
       {/* Pilares */}
-      <Section className="border-t border-border">
+      <Section>
         <Reveal>
           <SectionHeading
             eyebrow="O que garantimos"
@@ -123,7 +123,7 @@ export default function SistemasPage() {
       </Section>
 
       {/* Escopo definido por projeto */}
-      <Section className="border-t border-border">
+      <Section>
         <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
           <Reveal>
             <SectionHeading

@@ -4,6 +4,7 @@ import { Target, Eye, Compass, Handshake, ArrowRight } from "lucide-react"
 import { PageHero } from "@/components/page-hero"
 import { Section, SectionHeading } from "@/components/section"
 import { Reveal } from "@/components/reveal"
+import { RevealText } from "@/components/reveal-text"
 import { BentoCard } from "@/components/bento-card"
 import { Button } from "@/components/ui/button"
 import { CtaSection } from "@/components/cta-section"
@@ -54,7 +55,7 @@ export default function SobrePage() {
         </Button>
       </PageHero>
 
-      <Section>
+      <Section className="prx-wash-muted">
         <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
           <Reveal>
             <div>
@@ -99,7 +100,7 @@ export default function SobrePage() {
         </div>
       </Section>
 
-      <Section className="border-t border-border bg-muted/30">
+      <Section>
         <SectionHeading
           eyebrow="Como conduzimos os projetos"
           title="Um processo claro do início à evolução"
@@ -112,7 +113,7 @@ export default function SobrePage() {
             <Reveal key={step.n} delay={i * 80}>
               <BentoCard className="flex h-full flex-col p-6">
                 <span className="font-pixel text-2xl font-semibold text-primary">{step.n}</span>
-                <h3 className="mt-3 text-base font-semibold text-foreground">{step.title}</h3>
+                <h3 className="mt-3 min-h-12 text-base font-semibold text-foreground">{step.title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{step.desc}</p>
               </BentoCard>
             </Reveal>
@@ -120,30 +121,40 @@ export default function SobrePage() {
         </div>
       </Section>
 
-      <Section className="border-t border-border">
-        <SectionHeading
-          eyebrow="Diferenciais"
-          title="O que torna a PRXLab diferente"
-          align="center"
-          className="mx-auto"
-        />
-        <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {differentials.map((d, i) => {
-            const Icon = d.icon
-            return (
-              <Reveal key={d.title} delay={i * 60}>
-                <BentoCard className="flex h-full flex-col p-6">
-                  <span className="grid size-11 place-items-center rounded-xl border border-border bg-secondary text-primary">
-                    <Icon className="size-5" />
-                  </span>
-                  <h3 className="mt-4 text-base font-semibold text-foreground">{d.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{d.desc}</p>
-                </BentoCard>
-              </Reveal>
-            )
-          })}
+      <section className="bg-accent">
+        <div className="mx-auto max-w-7xl px-4 py-11 sm:px-6 sm:py-13 lg:px-8">
+          <Reveal className="mx-auto max-w-2xl text-center">
+            <div className="flex items-center justify-center gap-3">
+              <span aria-hidden="true" className="h-px w-10 bg-primary/50" />
+              <span className="font-mono text-xs uppercase tracking-[0.2em] text-accent-foreground">
+                Diferenciais
+              </span>
+            </div>
+            <RevealText
+              as="h2"
+              className="mt-5 text-3xl font-light tracking-tight text-foreground sm:text-4xl md:text-[2.75rem] md:leading-[1.1]"
+            >
+              O que torna a PRXLab diferente
+            </RevealText>
+          </Reveal>
+          <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {differentials.map((d, i) => {
+              const Icon = d.icon
+              return (
+                <Reveal key={d.title} delay={i * 50}>
+                  <div className="flex h-full flex-col rounded-2xl border border-border bg-card p-6 transition-colors duration-300 hover:border-primary/30">
+                    <span className="grid size-10 place-items-center rounded-lg bg-primary/10 text-primary">
+                      <Icon className="size-5" />
+                    </span>
+                    <h3 className="mt-4 text-sm font-semibold text-foreground">{d.title}</h3>
+                    <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{d.desc}</p>
+                  </div>
+                </Reveal>
+              )
+            })}
+          </div>
         </div>
-      </Section>
+      </section>
 
       <CtaSection />
     </>

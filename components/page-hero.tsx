@@ -16,17 +16,9 @@ export function PageHero({
   children?: React.ReactNode
 }) {
   return (
-    <section className="relative overflow-hidden border-b border-border">
-      <ParticleNetwork className="absolute inset-0 h-full w-full text-primary/60" density={60} connections={false} />
-      <div
-        aria-hidden="true"
-        className="prx-blob-a absolute -top-40 left-1/2 h-80 w-[42rem] -translate-x-1/2 rounded-full bg-primary/25 blur-3xl"
-      />
-      <div
-        aria-hidden="true"
-        className="prx-blob-c absolute -bottom-32 right-0 h-72 w-72 rounded-full bg-accent/80 blur-3xl"
-      />
-      <div className="relative px-4 py-20 sm:px-6 sm:py-28 lg:px-8">
+    <section className="relative overflow-hidden">
+      <ParticleNetwork className="absolute inset-0 h-full w-full text-primary/50" density={50} connections={false} />
+      <div className="relative px-4 py-13 sm:px-6 sm:py-16 lg:px-8">
         <div className="mx-auto max-w-7xl">
           <div className="max-w-3xl">
             <Reveal>

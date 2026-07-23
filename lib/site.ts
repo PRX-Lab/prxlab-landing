@@ -12,7 +12,6 @@ export const mainNav = [
   { label: "Início", href: "/" },
   { label: "Serviços", href: "/servicos" },
   { label: "Produtos", href: "/produtos" },
-  { label: "Hospedagem", href: "/hospedagem" },
   { label: "Sobre", href: "/sobre" },
   { label: "Contato", href: "/contato" },
 ]

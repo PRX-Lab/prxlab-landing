@@ -75,7 +75,7 @@ export default function HospedagemPage() {
       </PageHero>
 
       {/* O que pode estar incluído */}
-      <Section>
+      <Section className="prx-wash-secondary">
         <Reveal>
           <SectionHeading
             eyebrow="O que pode estar incluído"
@@ -102,7 +102,7 @@ export default function HospedagemPage() {
       </Section>
 
       {/* Planos */}
-      <Section className="border-t border-border">
+      <Section>
         <Reveal>
           <SectionHeading
             eyebrow="Planos"
@@ -127,7 +127,7 @@ export default function HospedagemPage() {
       </Section>
 
       {/* FAQ */}
-      <Section className="border-t border-border">
+      <Section>
         <div className="grid gap-12 lg:grid-cols-[1fr_1.4fr] lg:gap-16">
           <Reveal>
             <SectionHeading eyebrow="Perguntas frequentes" title="Dúvidas sobre hospedagem." />

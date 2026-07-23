@@ -6,6 +6,7 @@ import { cn } from "@/lib/utils"
 type BentoCardProps = {
   children: React.ReactNode
   className?: string
+  cardClassName?: string
   as?: React.ElementType
   badge?: React.ReactNode
   [key: string]: unknown
@@ -13,9 +14,19 @@ type BentoCardProps = {
 
 // Card with a subtle radial glow that follows the pointer on hover — the
 // signature hover treatment shared across every card grid on the site.
+// `className` lays out the actual children (flex/grid/padding — it's applied
+// to the div that directly wraps them). `cardClassName` overrides the outer
+// chrome (border/background/shadow) only, e.g. for a highlighted variant.
 // `badge` renders centered on the card's own top border (outside the card's
 // own overflow-hidden box), for the classic "Recomendado" ribbon look.
-export function BentoCard({ children, className, as: Tag = "div", badge, ...props }: BentoCardProps) {
+export function BentoCard({
+  children,
+  className,
+  cardClassName,
+  as: Tag = "div",
+  badge,
+  ...props
+}: BentoCardProps) {
   const handleMouse = (e: React.MouseEvent<HTMLDivElement>) => {
     const el = e.currentTarget
     const rect = el.getBoundingClientRect()
@@ -34,7 +45,7 @@ export function BentoCard({ children, className, as: Tag = "div", badge, ...prop
         onMouseMove={handleMouse}
         className={cn(
           "group relative h-full overflow-hidden rounded-2xl border border-border bg-card transition-colors duration-300 hover:border-foreground/15",
-          className,
+          cardClassName,
         )}
         {...props}
       >
@@ -46,7 +57,7 @@ export function BentoCard({ children, className, as: Tag = "div", badge, ...prop
               "radial-gradient(400px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), color-mix(in oklch, var(--foreground) 5%, transparent), transparent 60%)",
           }}
         />
-        <div className="relative z-10 h-full">{children}</div>
+        <div className={cn("relative z-10 h-full", className)}>{children}</div>
       </Tag>
     </div>
   )

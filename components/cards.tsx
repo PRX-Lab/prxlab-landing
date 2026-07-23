@@ -33,14 +33,14 @@ export function LandingPlanCard({ plan }: { plan: LandingPlan }) {
   const Icon = LANDING_PLAN_ICONS[plan.id] ?? FileText
   return (
     <BentoCard
-      className={cn(
-        "flex flex-col p-6",
+      className="flex flex-col p-6"
+      cardClassName={cn(
         plan.recommended && "border-primary/30 bg-secondary/50 shadow-xl shadow-primary/10",
       )}
       badge={
         plan.recommended && (
-          <span className="inline-flex items-center gap-1 rounded-full bg-primary px-3 py-1 text-xs font-medium whitespace-nowrap text-primary-foreground shadow-md shadow-primary/30">
-            <Star className="size-3 fill-current" />
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-linear-to-r from-primary to-primary/85 px-3.5 py-1.5 text-xs font-semibold whitespace-nowrap text-primary-foreground shadow-lg shadow-primary/40 ring-1 ring-primary-foreground/15">
+            <Star className="size-3.5 fill-current" />
             Recomendada
           </span>
         )
@@ -55,7 +55,8 @@ export function LandingPlanCard({ plan }: { plan: LandingPlan }) {
         <Icon className="size-5" />
       </span>
       <h3 className="mt-4 min-h-7 text-xl font-semibold text-foreground">{plan.name}</h3>
-      <p className="mt-2 inline-flex w-fit items-center whitespace-nowrap rounded-full bg-secondary px-2.5 py-1 font-mono text-[10px] uppercase tracking-wider text-secondary-foreground">
+      <p className="mt-2 inline-flex w-fit items-center gap-1.5 whitespace-nowrap rounded-full border border-border bg-secondary/60 px-2.5 py-1 font-mono text-[10px] uppercase tracking-wider text-secondary-foreground">
+        <span className="size-1 shrink-0 rounded-full bg-primary" />
         {plan.tagline}
       </p>
       <p className="mt-4 min-h-18 text-sm leading-relaxed text-muted-foreground">{plan.description}</p>
@@ -89,14 +90,14 @@ export function LandingPlanCard({ plan }: { plan: LandingPlan }) {
 export function HostingCard({ plan }: { plan: HostingPlan }) {
   return (
     <BentoCard
-      className={cn(
-        "flex flex-col p-6",
+      className="flex flex-col p-6"
+      cardClassName={cn(
         plan.recommended && "border-primary/30 bg-secondary/50 shadow-xl shadow-primary/10",
       )}
       badge={
         plan.recommended && (
-          <span className="inline-flex items-center gap-1 rounded-full bg-primary px-3 py-1 text-xs font-medium whitespace-nowrap text-primary-foreground shadow-md shadow-primary/30">
-            <Star className="size-3 fill-current" />
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-linear-to-r from-primary to-primary/85 px-3.5 py-1.5 text-xs font-semibold whitespace-nowrap text-primary-foreground shadow-lg shadow-primary/40 ring-1 ring-primary-foreground/15">
+            <Star className="size-3.5 fill-current" />
             Recomendado
           </span>
         )
@@ -123,22 +124,16 @@ export function HostingCard({ plan }: { plan: HostingPlan }) {
 
 export function ProductCard({ product }: { product: Product }) {
   return (
-    <BentoCard className="grid gap-6 p-6 lg:grid-cols-2 lg:gap-10 lg:p-8">
-      <div className="relative order-last overflow-hidden rounded-2xl border border-border bg-secondary lg:order-first">
+    <BentoCard className="grid gap-6 p-6 lg:grid-cols-2 lg:items-center lg:gap-10 lg:p-8">
+      <div className="relative order-last aspect-4/3 overflow-hidden rounded-2xl border border-border bg-secondary lg:order-first lg:aspect-auto lg:h-96">
         <img
           src={product.image || "/placeholder.svg"}
           alt={`Interface do ${product.name}`}
           className="h-full w-full object-cover"
         />
       </div>
-      <div className="flex flex-col">
-        <div className="flex items-center gap-3">
-          <span className="font-mono text-xs uppercase tracking-wider text-primary">{product.category}</span>
-          <span className="inline-flex items-center gap-1.5 rounded-full bg-success/10 px-2.5 py-1 text-xs font-medium text-success">
-            <span className="size-1.5 rounded-full bg-success" />
-            {product.status}
-          </span>
-        </div>
+      <div className="flex flex-col justify-center">
+        <span className="font-mono text-xs uppercase tracking-wider text-primary">{product.category}</span>
         <h3 className="mt-3 text-2xl font-semibold text-foreground">{product.name}</h3>
         <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{product.description}</p>
 

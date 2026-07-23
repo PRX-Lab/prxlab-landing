@@ -135,7 +135,7 @@ export default function ServicosPage() {
         </Button>
       </PageHero>
 
-      <Section>
+      <Section className="prx-wash-secondary">
         <div className="grid gap-5 md:grid-cols-2">
           {detailedServices.map((service, i) => {
             const Icon = service.icon

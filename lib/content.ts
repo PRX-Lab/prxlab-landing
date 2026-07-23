@@ -237,7 +237,7 @@ export const processSteps = [
   {
     n: "05",
     title: "Suporte, hospedagem e evolução",
-    desc: "Acompanhamos o produto em produção com manutenção e melhorias contínuas.",
+    desc: "Suporte técnico e hospedagem disponíveis, com melhorias e novas funcionalidades avaliadas sob consulta.",
   },
 ]
 

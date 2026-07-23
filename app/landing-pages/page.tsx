@@ -85,7 +85,7 @@ export default function LandingPagesPage() {
         </Button>
       </PageHero>
 
-      <Section>
+      <Section className="prx-wash-secondary">
         <div className="grid gap-5 lg:grid-cols-3">
           {landingPlans.map((plan, i) => (
             <Reveal key={plan.id} delay={i * 80}>
@@ -95,7 +95,7 @@ export default function LandingPagesPage() {
         </div>
       </Section>
 
-      <Section className="border-t border-border">
+      <Section>
         <Reveal>
           <SectionHeading
             eyebrow="Comparativo"
