@@ -75,6 +75,8 @@ export default function SistemasPage() {
       <Section className="prx-wash-secondary">
         <Reveal>
           <SectionHeading
+            align="center"
+            className="mx-auto"
             eyebrow="Categorias"
             title="Projetos diversos, construídos sob medida."
             description="Trabalhamos com diferentes tipos de aplicação. A categoria é apenas um ponto de partida — cada projeto é definido conforme a sua necessidade."

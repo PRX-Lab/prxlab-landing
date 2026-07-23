@@ -27,6 +27,7 @@ const rows: { label: string; basica: Cell; customizavel: Cell; completa: Cell }[
   { label: "Gerenciamento de cards", basica: "no", customizavel: "partial", completa: "yes" },
   { label: "Gerenciamento de seções", basica: "no", customizavel: "no", completa: "yes" },
   { label: "Sistema de traduções", basica: "addon", customizavel: "addon", completa: "included" },
+  { label: "Sistema de dois temas", basica: "addon", customizavel: "addon", completa: "included" },
   { label: "Possibilidade de expansão", basica: "Limitada", customizavel: "Modular", completa: "Ampla" },
   {
     label: "Indicação de uso",
@@ -140,7 +141,8 @@ export default function LandingPagesPage() {
               "O plano básico é estático, sem painel administrativo.",
               "O plano customizável libera somente áreas específicas definidas no projeto.",
               "O plano completo permite controle amplo de toda a página.",
-              "As traduções podem ser adicionadas aos planos básico e customizável. A modalidade completa já inclui idiomas.",
+              "Traduções e o sistema de dois temas são recursos adicionais nos planos básico e customizável. O plano completo já inclui os dois.",
+              "Seguimos as diretrizes do Google PageSpeed Insights para garantir boa performance em todos os projetos.",
             ].map((note) => (
               <div key={note} className="flex gap-3 rounded-xl border border-border bg-card p-4 text-sm text-muted-foreground">
                 <Info className="mt-0.5 size-4 shrink-0 text-primary" />

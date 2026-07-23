@@ -11,7 +11,7 @@ export const siteConfig = {
 export const mainNav = [
   { label: "Início", href: "/" },
   { label: "Serviços", href: "/servicos" },
-  { label: "Produtos", href: "/produtos" },
+  { label: "Projetos Próprios", href: "/projetos-proprios" },
   { label: "Sobre", href: "/sobre" },
   { label: "Contato", href: "/contato" },
 ]
@@ -24,7 +24,7 @@ export const footerNav = {
     { label: "Sistemas e SaaS", href: "/sistemas" },
   ],
   empresa: [
-    { label: "Produtos", href: "/produtos" },
+    { label: "Projetos Próprios", href: "/projetos-proprios" },
     { label: "Hospedagem", href: "/hospedagem" },
     { label: "Sobre", href: "/sobre" },
     { label: "Contato", href: "/contato" },

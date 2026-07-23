@@ -12,7 +12,8 @@ import { StatsStrip } from "@/components/stats-strip"
 import { StackingServiceCards } from "@/components/stacking-service-cards"
 import { LiveStatusFeed } from "@/components/live-status-feed"
 import { MarqueeStrip } from "@/components/marquee-strip"
-import { LandingPlanCard, ProductCard } from "@/components/cards"
+import { LandingPlanCard } from "@/components/cards"
+import { ProjectsCarousel } from "@/components/projects-carousel"
 import { CtaSection } from "@/components/cta-section"
 import { Faq } from "@/components/faq"
 import {
@@ -225,23 +226,19 @@ export default function HomePage() {
       </Section>
 
       {/* PRODUTO EM DESTAQUE */}
-      <section className="prx-wash-secondary relative px-4 py-11 sm:px-6 sm:py-13 lg:px-8">
+      <section id="projetos-proprios" className="prx-wash-secondary relative px-4 py-11 sm:px-6 sm:py-13 lg:px-8">
         <div className="relative mx-auto max-w-7xl">
           <Reveal>
             <SectionHeading
               align="center"
               className="mx-auto"
-              eyebrow="Produto em destaque"
-              title="Produtos próprios da PRXLab."
-              description="Além de projetos sob medida, desenvolvemos produtos próprios em produção."
+              eyebrow="Projetos próprios"
+              title="Projetos próprios da PRXLab."
+              description="Além de projetos sob medida, desenvolvemos e mantemos projetos próprios em produção."
             />
           </Reveal>
-          <div className="mt-12 space-y-6">
-            {products.map((product) => (
-              <Reveal key={product.name}>
-                <ProductCard product={product} />
-              </Reveal>
-            ))}
+          <div className="mt-12">
+            <ProjectsCarousel products={products} />
           </div>
         </div>
       </section>
@@ -262,7 +259,7 @@ export default function HomePage() {
             <div className="mt-8">
               <Button asChild variant="outline">
                 <Link href="/hospedagem">
-                  Ver planos de hospedagem
+                  Ver como funciona a hospedagem
                   <ArrowRight className="size-4" />
                 </Link>
               </Button>

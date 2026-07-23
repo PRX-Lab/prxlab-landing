@@ -1,24 +1,24 @@
 import type { Metadata } from "next"
 import { PageHero } from "@/components/page-hero"
-import { Section, SectionHeading } from "@/components/section"
+import { Section } from "@/components/section"
 import { Reveal } from "@/components/reveal"
 import { ProductCard } from "@/components/cards"
 import { CtaSection } from "@/components/cta-section"
 import { products } from "@/lib/content"
 
 export const metadata: Metadata = {
-  title: "Produtos",
+  title: "Projetos Próprios",
   description:
-    "Produtos próprios e projetos selecionados da PRXLab, começando pelo PRX Finance System, um sistema financeiro em produção.",
+    "Projetos próprios da PRXLab: PRX Finance System, ACID/C e Truco Online, produtos e sites em produção desenvolvidos pela nossa equipe.",
 }
 
 export default function ProdutosPage() {
   return (
     <>
       <PageHero
-        eyebrow="Produtos"
-        title="Produtos próprios e projetos selecionados."
-        description="Além de projetos sob medida, desenvolvemos e mantemos produtos próprios em produção. Esta página cresce conforme novos produtos são lançados."
+        eyebrow="Projetos Próprios"
+        title="Projetos próprios e produtos em produção."
+        description="Além de projetos sob medida para clientes, desenvolvemos e mantemos projetos próprios em produção. Esta página cresce conforme novos projetos são lançados."
       />
 
       <Section className="prx-wash-secondary">
@@ -29,18 +29,6 @@ export default function ProdutosPage() {
             </Reveal>
           ))}
         </div>
-      </Section>
-
-      <Section>
-        <Reveal>
-          <div className="rounded-2xl border border-dashed border-border bg-card/50 p-10 text-center">
-            <SectionHeading
-              align="center"
-              title="Novos produtos em breve."
-              description="Esta seção está preparada para receber novos produtos da PRXLab. Tem uma ideia de produto? Podemos desenvolvê-la com você."
-            />
-          </div>
-        </Reveal>
       </Section>
 
       <CtaSection

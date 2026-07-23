@@ -10,6 +10,7 @@ import {
   ShieldCheck,
   RefreshCcw,
   Building2,
+  Gauge,
   type LucideIcon,
 } from "lucide-react"
 
@@ -80,6 +81,8 @@ export type LandingPlan = {
   recommended?: boolean
   indicated: string[]
   includes: string[]
+  addons?: string[]
+  addonsIncluded?: boolean
 }
 
 export const landingPlans: LandingPlan[] = [
@@ -99,11 +102,10 @@ export const landingPlans: LandingPlan[] = [
     includes: [
       "Conteúdo institucional",
       "Formulários",
-      "Integração com WhatsApp",
       "Links comerciais",
       "Design responsivo e boa performance",
-      "Sistema de traduções como recurso adicional",
     ],
+    addons: ["ADD-ON: Recurso de Traduções", "ADD-ON: Recurso de dois temas"],
   },
   {
     id: "customizavel",
@@ -118,13 +120,11 @@ export const landingPlans: LandingPlan[] = [
       "Localidades e serviços",
     ],
     includes: [
-      "Gerenciamento de localidades",
-      "Produtos, estoque e serviços",
-      "Unidades e catálogos",
-      "Informações comerciais",
-      "Controle apenas das áreas necessárias",
-      "Sistema de traduções como recurso adicional",
+      "Tudo do plano básico",
+      "Controle limitado do site pela interface",
+      "Controle administrativo do site pela interface (usuários, configurações)",
     ],
+    addons: ["ADD-ON: Recurso de Traduções", "ADD-ON: Recurso de dois temas"],
   },
   {
     id: "completa",
@@ -138,13 +138,13 @@ export const landingPlans: LandingPlan[] = [
       "Operações com muitas seções",
     ],
     includes: [
-      "Textos, imagens e banners",
-      "Cards, seções e ordem dos componentes",
-      "Produtos, serviços e estoque",
-      "Localidades e chamadas comerciais",
-      "Conteúdo institucional",
-      "Sistema de idiomas incluído",
+      "Tudo do plano customizável",
+      "Controle total do site pela interface",
+      "Textos, imagens e traduções editáveis pela interface",
+      "Customização de seções e ordem de componentes pela interface",
     ],
+    addons: ["Recurso de Traduções incluído", "Recurso de dois temas incluído"],
+    addonsIncluded: true,
   },
 ]
 
@@ -167,50 +167,6 @@ export const systemPillars = [
   { icon: ShieldCheck, title: "Segurança e permissões", desc: "Controle de usuários, perfis e acessos granulares." },
   { icon: LineChart, title: "Escalabilidade", desc: "Estrutura preparada para crescer junto com o negócio." },
   { icon: RefreshCcw, title: "Manutenção e evolução", desc: "Melhorias e novas funcionalidades ao longo do tempo." },
-]
-
-export type HostingPlan = {
-  name: string
-  summary: string
-  recommended?: boolean
-  features: string[]
-}
-
-export const hostingPlans: HostingPlan[] = [
-  {
-    name: "Essencial",
-    summary: "Para projetos e landing pages que precisam de publicação confiável.",
-    features: [
-      "Publicação do projeto",
-      "Configuração do ambiente",
-      "Certificado SSL",
-      "Monitoramento básico",
-      "Suporte técnico",
-    ],
-  },
-  {
-    name: "Profissional",
-    summary: "Para sistemas em produção que exigem acompanhamento próximo.",
-    recommended: true,
-    features: [
-      "Tudo do Essencial",
-      "Monitoramento de disponibilidade",
-      "Atualizações de infraestrutura",
-      "Manutenção do ambiente",
-      "Backups quando incluídos no plano",
-    ],
-  },
-  {
-    name: "Avançado",
-    summary: "Para operações críticas com necessidades específicas de infraestrutura.",
-    features: [
-      "Tudo do Profissional",
-      "Infraestrutura dimensionada por projeto",
-      "Acompanhamento dedicado",
-      "Rotinas de backup ampliadas",
-      "Proposta personalizada",
-    ],
-  },
 ]
 
 export const processSteps = [
@@ -250,6 +206,11 @@ export const differentials = [
   { icon: ShieldCheck, title: "Segurança e estabilidade", desc: "Foco em ambientes seguros e confiáveis." },
   { icon: Blocks, title: "Tecnologias modernas", desc: "Stack atual e bem estruturada." },
   { icon: RefreshCcw, title: "Suporte após a publicação", desc: "Acompanhamento contínuo e evolução do produto." },
+  {
+    icon: Gauge,
+    title: "Performance validada",
+    desc: "Seguimos as diretrizes do Google PageSpeed Insights em todos os projetos que desenvolvemos.",
+  },
 ]
 
 export const faqs = [
@@ -275,7 +236,7 @@ export const faqs = [
   },
   {
     q: "A hospedagem pode ser mensal ou anual?",
-    a: "Sim. Existem opções mensais e anuais. Os recursos variam conforme o projeto e o tipo de sistema.",
+    a: "Sim. A forma de cobrança é definida na proposta, conforme o projeto e o tipo de sistema.",
   },
   {
     q: "A PRXLab desenvolve sistemas para qualquer segmento?",
@@ -323,5 +284,39 @@ export const products: Product[] = [
     status: "Em produção",
     href: "https://finance-system.prxlab.app/login",
     image: "/images/prx-finance-mockup.png",
+  },
+  {
+    name: "Truco Online",
+    category: "Jogo multiplayer",
+    description:
+      "Aplicação para jogar truco online em tempo real com amigos, direto do navegador, com salas privadas e pontuação automática.",
+    problem:
+      "Dificuldade de reunir um grupo para jogar truco presencialmente, mesmo com os amigos à distância.",
+    features: [
+      "Partidas multiplayer em tempo real",
+      "Salas privadas por grupo de amigos",
+      "Pontuação e regras automatizadas",
+      "Interface simples, direto do navegador",
+    ],
+    status: "Em produção",
+    href: "https://truco.prxlab.app",
+    image: "/images/03.png",
+  },
+  {
+    name: "ACID/C",
+    category: "Site institucional",
+    description:
+      "Site institucional da ACID/C, banda tributo ao AC/DC, criado para apresentar a banda, divulgar apresentações e centralizar o contato para contratações.",
+    problem:
+      "Falta de um canal digital único para apresentar a banda, divulgar shows e receber contatos de contratação.",
+    features: [
+      "Apresentação institucional da banda",
+      "Divulgação de datas e apresentações",
+      "Galeria de fotos e vídeos",
+      "Contato para contratações",
+    ],
+    status: "Em produção",
+    href: "https://acidc.com.br",
+    image: "/images/02.png",
   },
 ]

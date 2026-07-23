@@ -3,7 +3,7 @@ import { ArrowRight, Check, FileText, SlidersHorizontal, Sparkles, Star, type Lu
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { BentoCard } from "@/components/bento-card"
-import type { Service, LandingPlan, HostingPlan, Product } from "@/lib/content"
+import type { Service, LandingPlan, Product } from "@/lib/content"
 
 const LANDING_PLAN_ICONS: Record<string, LucideIcon> = {
   basica: FileText,
@@ -63,7 +63,7 @@ export function LandingPlanCard({ plan }: { plan: LandingPlan }) {
 
       <div className="mt-6 border-t border-border pt-5">
         <p className="text-xs font-semibold uppercase tracking-wider text-foreground">Inclui</p>
-        <ul className="mt-3 space-y-2.5">
+        <ul className="mt-3 min-h-38 space-y-2.5">
           {plan.includes.map((item) => (
             <li key={item} className="flex items-start gap-2.5 text-sm text-muted-foreground">
               <span className="mt-0.5 grid size-4 shrink-0 place-items-center rounded-full bg-primary/10 text-primary">
@@ -75,47 +75,33 @@ export function LandingPlanCard({ plan }: { plan: LandingPlan }) {
         </ul>
       </div>
 
+      {plan.addons && plan.addons.length > 0 && (
+        <div className="mt-5 border-t border-dashed border-border pt-5">
+          <p className="text-xs font-semibold uppercase tracking-wider text-foreground">Recursos adicionais</p>
+          <ul className="mt-3 space-y-2.5">
+            {plan.addons.map((item) => (
+              <li key={item} className="flex items-start gap-2.5 text-sm text-muted-foreground">
+                <span
+                  className={cn(
+                    "mt-0.5 grid size-4 shrink-0 place-items-center rounded-full",
+                    plan.addonsIncluded ? "bg-primary/10 text-primary" : "bg-secondary text-secondary-foreground",
+                  )}
+                >
+                  {plan.addonsIncluded ? <Check className="size-2.5" /> : <Sparkles className="size-2.5" />}
+                </span>
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+
       <div className="mt-auto pt-6">
         <Button asChild className="w-full" variant={plan.recommended ? "default" : "outline"}>
           <Link href="/contato">
             Solicitar proposta
             <ArrowRight className="size-4" />
           </Link>
-        </Button>
-      </div>
-    </BentoCard>
-  )
-}
-
-export function HostingCard({ plan }: { plan: HostingPlan }) {
-  return (
-    <BentoCard
-      className="flex flex-col p-6"
-      cardClassName={cn(
-        plan.recommended && "border-primary/30 bg-secondary/50 shadow-xl shadow-primary/10",
-      )}
-      badge={
-        plan.recommended && (
-          <span className="inline-flex items-center gap-1.5 rounded-full bg-linear-to-r from-primary to-primary/85 px-3.5 py-1.5 text-xs font-semibold whitespace-nowrap text-primary-foreground shadow-lg shadow-primary/40 ring-1 ring-primary-foreground/15">
-            <Star className="size-3.5 fill-current" />
-            Recomendado
-          </span>
-        )
-      }
-    >
-      <h3 className="min-h-7 text-xl font-semibold text-foreground">{plan.name}</h3>
-      <p className="mt-2 min-h-11 text-sm leading-relaxed text-muted-foreground">{plan.summary}</p>
-      <ul className="mt-6 space-y-2">
-        {plan.features.map((f) => (
-          <li key={f} className="flex gap-2 text-sm text-muted-foreground">
-            <Check className="mt-0.5 size-4 shrink-0 text-primary" />
-            <span>{f}</span>
-          </li>
-        ))}
-      </ul>
-      <div className="mt-auto pt-6">
-        <Button asChild className="w-full" variant={plan.recommended ? "default" : "outline"}>
-          <Link href="/contato">Solicitar proposta</Link>
         </Button>
       </div>
     </BentoCard>
