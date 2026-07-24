@@ -38,6 +38,9 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "PRXLab" }],
   generator: "v0.app",
+  icons: {
+    icon: "/prx-icon-organge.svg",
+  },
   openGraph: {
     title: "PRXLab — Desenvolvimento de produtos digitais sob medida",
     description:
