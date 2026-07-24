@@ -4,7 +4,7 @@ export const siteConfig = {
     "Desenvolvimento de landing pages, sistemas personalizados, produtos SaaS e hospedagem gerenciada.",
   // Placeholders editáveis — substituir pelos dados reais da empresa
   email: "contato@prxlab.app",
-  whatsapp: "+55 (00) 00000-0000",
+  whatsapp: "+55 (19) 99740-4451",
   responseTime: "Retorno em até 1 dia útil", // conteúdo editável
 }
 

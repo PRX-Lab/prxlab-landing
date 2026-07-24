@@ -25,11 +25,29 @@ const projectOptions = [
   "Outro",
 ]
 
+function formatPhone(value: string) {
+  const digits = value.replace(/\D/g, "").slice(0, 11)
+  if (digits.length === 0) return ""
+  if (digits.length <= 2) return `(${digits}`
+  if (digits.length <= 6) return `(${digits.slice(0, 2)}) ${digits.slice(2)}`
+  if (digits.length <= 10) return `(${digits.slice(0, 2)}) ${digits.slice(2, 6)}-${digits.slice(6)}`
+  return `(${digits.slice(0, 2)}) ${digits.slice(2, 7)}-${digits.slice(7)}`
+}
+
+function formatCurrency(value: string) {
+  const digits = value.replace(/\D/g, "")
+  if (!digits) return ""
+  const amount = Number(digits) / 100
+  return amount.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })
+}
+
 type Status = "idle" | "loading" | "success" | "error"
 
 export function ContactForm() {
   const [status, setStatus] = React.useState<Status>("idle")
   const [projectType, setProjectType] = React.useState("")
+  const [telefone, setTelefone] = React.useState("")
+  const [investimento, setInvestimento] = React.useState("")
   const [errors, setErrors] = React.useState<Record<string, string>>({})
 
   function validate(form: HTMLFormElement) {
@@ -60,6 +78,8 @@ export function ContactForm() {
       setStatus("success")
       form.reset()
       setProjectType("")
+      setTelefone("")
+      setInvestimento("")
     } catch {
       setStatus("error")
     }
@@ -106,7 +126,16 @@ export function ContactForm() {
           <Input id="email" name="email" type="email" autoComplete="email" aria-invalid={!!errors.email} />
         </Field>
         <Field label="Telefone ou WhatsApp" htmlFor="telefone">
-          <Input id="telefone" name="telefone" type="tel" autoComplete="tel" placeholder="(00) 00000-0000" />
+          <Input
+            id="telefone"
+            name="telefone"
+            type="tel"
+            autoComplete="tel"
+            placeholder="(00) 00000-0000"
+            value={telefone}
+            onChange={(e) => setTelefone(formatPhone(e.target.value))}
+            maxLength={15}
+          />
         </Field>
 
         <div className="sm:col-span-2">
@@ -139,7 +168,14 @@ export function ContactForm() {
         </div>
 
         <Field label="Faixa de investimento" htmlFor="investimento" optional>
-          <Input id="investimento" name="investimento" placeholder="Opcional" />
+          <Input
+            id="investimento"
+            name="investimento"
+            inputMode="numeric"
+            placeholder="R$ 0,00"
+            value={investimento}
+            onChange={(e) => setInvestimento(formatCurrency(e.target.value))}
+          />
         </Field>
         <Field label="Prazo desejado" htmlFor="prazo" optional>
           <Input id="prazo" name="prazo" placeholder="Opcional" />

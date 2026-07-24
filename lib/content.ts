@@ -1,5 +1,4 @@
 import {
-  Layout,
   Boxes,
   Cloud,
   Wrench,
@@ -200,7 +199,6 @@ export const processSteps = [
 export const differentials = [
   { icon: Wrench, title: "Desenvolvimento sob medida", desc: "Soluções construídas para o seu processo específico." },
   { icon: Plug, title: "Comunicação direta", desc: "Contato próximo e transparente durante todo o projeto." },
-  { icon: Layout, title: "Interfaces modernas", desc: "Experiências intuitivas e fáceis de usar." },
   { icon: LineChart, title: "Preparado para crescer", desc: "Arquitetura pensada para escalar com o negócio." },
   { icon: Cloud, title: "Desenvolvimento e hospedagem", desc: "Tudo na mesma empresa, com menos complexidade." },
   { icon: ShieldCheck, title: "Segurança e estabilidade", desc: "Foco em ambientes seguros e confiáveis." },

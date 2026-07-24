@@ -105,8 +105,6 @@ export default function SobrePage() {
           eyebrow="Como conduzimos os projetos"
           title="Um processo claro do início à evolução"
           description="Etapas bem definidas para manter o projeto organizado e previsível."
-          align="center"
-          className="mx-auto"
         />
         <div className="mt-14 grid gap-4 md:grid-cols-3 lg:grid-cols-5">
           {processSteps.map((step, i) => (

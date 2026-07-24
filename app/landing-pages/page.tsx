@@ -1,6 +1,6 @@
 import type { Metadata } from "next"
 import Link from "next/link"
-import { Check, Minus, ArrowRight, Info } from "lucide-react"
+import { Check, X, Plus, ArrowRight, Info } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { PageHero } from "@/components/page-hero"
 import { Section, SectionHeading } from "@/components/section"
@@ -48,7 +48,7 @@ function CellValue({ value }: { value: Cell }) {
   if (value === "no")
     return (
       <span className="inline-flex items-center gap-1.5 text-sm text-muted-foreground">
-        <Minus className="size-4" />
+        <X className="size-4" />
         Não
       </span>
     )
@@ -56,7 +56,8 @@ function CellValue({ value }: { value: Cell }) {
     return <span className="text-sm text-muted-foreground">Áreas específicas</span>
   if (value === "addon")
     return (
-      <span className="inline-flex items-center rounded-full bg-secondary px-2.5 py-0.5 text-xs font-medium text-secondary-foreground">
+      <span className="inline-flex items-center gap-1 rounded-full bg-blue-500/10 px-2.5 py-0.5 text-xs font-medium text-blue-600 ring-1 ring-inset ring-blue-500/25 dark:bg-blue-400/10 dark:text-blue-400 dark:ring-blue-400/25">
+        <Plus className="size-3" />
         Adicional
       </span>
     )

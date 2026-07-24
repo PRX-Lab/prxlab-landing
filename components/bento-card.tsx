@@ -44,7 +44,7 @@ export function BentoCard({
       <Tag
         onMouseMove={handleMouse}
         className={cn(
-          "group relative h-full overflow-hidden rounded-2xl border border-border bg-card transition-colors duration-300 hover:border-foreground/15",
+          "group relative block h-full overflow-hidden rounded-2xl border border-border bg-card transition-colors duration-300 hover:border-foreground/15",
           cardClassName,
         )}
         {...props}

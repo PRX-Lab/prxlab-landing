@@ -52,7 +52,7 @@ function StatItem({ stat, run }: { stat: Stat; run: boolean }) {
 
   return (
     <div
-      className={`group relative px-6 py-12 text-center sm:px-8 sm:text-left ${hasPopover ? "cursor-help" : ""}`}
+      className={`group px-6 py-12 text-center sm:px-8 sm:text-left ${hasPopover ? "cursor-help" : ""}`}
       tabIndex={hasPopover ? 0 : undefined}
     >
       <div className="font-display text-5xl font-semibold tracking-tight text-accent-foreground sm:text-6xl">
@@ -60,27 +60,25 @@ function StatItem({ stat, run }: { stat: Stat; run: boolean }) {
         {value}
         {stat.suffix}
       </div>
-      <div className="mt-3 inline-flex items-center gap-1.5 font-mono text-xs font-medium uppercase tracking-widest text-accent-foreground">
+      <div className="relative mt-3 inline-flex items-center gap-1.5 font-mono text-xs font-medium uppercase tracking-widest text-accent-foreground">
         <span className={hasPopover ? "border-b border-dashed border-accent-foreground/50" : undefined}>
           {stat.label}
         </span>
         {hasPopover && (
           <Info className="size-3.5 shrink-0 opacity-70 transition-transform duration-200 group-hover:scale-110" />
         )}
-      </div>
 
-      {stat.techGroups && (
-        <div
-          className="pointer-events-none absolute inset-x-4 top-full z-30 mt-3 origin-top scale-95 rounded-xl border border-border bg-popover p-4 text-left opacity-0 shadow-2xl transition-all duration-200 group-hover:pointer-events-auto group-hover:scale-100 group-hover:opacity-100 group-focus:pointer-events-auto group-focus:scale-100 group-focus:opacity-100 sm:inset-x-8 sm:w-72"
-        >
-          {stat.techGroups.map((group, i) => (
-            <div key={group.label} className={i > 0 ? "mt-3" : undefined}>
-              <p className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">{group.label}</p>
-              <p className="mt-1 text-sm text-popover-foreground">{group.items.join(", ")}</p>
-            </div>
-          ))}
-        </div>
-      )}
+        {stat.techGroups && (
+          <div className="pointer-events-none absolute left-1/2 top-full z-30 mt-3 w-72 max-w-[80vw] -translate-x-1/2 origin-top scale-95 rounded-xl border border-border bg-popover p-4 text-left opacity-0 shadow-2xl transition-all duration-200 group-hover:pointer-events-auto group-hover:scale-100 group-hover:opacity-100 group-focus:pointer-events-auto group-focus:scale-100 group-focus:opacity-100">
+            {stat.techGroups.map((group, i) => (
+              <div key={group.label} className={i > 0 ? "mt-3" : undefined}>
+                <p className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">{group.label}</p>
+                <p className="mt-1 text-sm text-popover-foreground">{group.items.join(", ")}</p>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
     </div>
   )
 }

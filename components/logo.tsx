@@ -1,7 +1,22 @@
 import Image from "next/image"
 import { cn } from "@/lib/utils"
 
-export function Logo({ className }: { className?: string }) {
+export function Logo({ className, variant = "theme" }: { className?: string; variant?: "theme" | "orange" }) {
+  if (variant === "orange") {
+    return (
+      <span className={cn("inline-flex items-center", className)}>
+        <Image
+          src="/prx-logo-orange.png"
+          alt="PRXLab"
+          width={400}
+          height={200}
+          priority
+          className="h-7 w-auto"
+        />
+      </span>
+    )
+  }
+
   return (
     <span className={cn("inline-flex items-center", className)}>
       <Image

@@ -6,7 +6,7 @@ import { useEffect, useRef } from "react"
 // Color is resolved from the element's computed `color` (set via className
 // text-foreground) so it automatically tracks the light/dark theme.
 
-type IconType = "platform" | "services" | "workflow" | "hosting" | "pricing"
+type IconType = "platform" | "workflow" | "hosting" | "pricing"
 
 interface PixelIconProps {
   type: IconType
@@ -41,46 +41,6 @@ function drawPlatform(ctx: CanvasRenderingContext2D, W: number, t: number, color
       ctx.fillRect(Math.round(lx / ps) * ps, Math.round(ly / ps) * ps, ps * 0.7, ps * 0.7)
     }
   }
-}
-
-const AGENT_FRAMES: number[][][] = [
-  [
-    [0,0,1,1,1,1,0,0],[0,0,1,1,1,1,0,0],[0,1,1,1,1,1,1,0],[0,0,1,1,1,1,0,0],
-    [0,1,1,0,0,1,1,0],[0,1,1,0,0,1,1,0],[0,0,1,0,0,1,0,0],[0,0,1,0,0,1,0,0],
-  ],
-  [
-    [0,0,1,1,1,1,0,0],[0,0,1,1,1,1,0,0],[0,1,1,1,1,1,1,0],[0,0,1,1,1,1,0,0],
-    [0,0,1,1,1,0,0,0],[0,0,1,1,1,1,0,0],[0,1,1,0,0,0,0,0],[0,0,0,0,0,1,1,0],
-  ],
-  [
-    [0,0,1,1,1,1,0,0],[0,0,1,1,1,1,0,0],[0,1,1,1,1,1,1,0],[0,0,1,1,1,1,0,0],
-    [0,1,1,0,0,1,1,0],[0,1,1,0,0,1,1,0],[0,0,1,0,0,1,0,0],[0,0,1,0,0,1,0,0],
-  ],
-  [
-    [0,0,1,1,1,1,0,0],[0,0,1,1,1,1,0,0],[0,1,1,1,1,1,1,0],[0,0,1,1,1,1,0,0],
-    [0,0,0,1,1,1,0,0],[0,0,1,1,1,1,0,0],[0,1,1,0,0,0,0,0],[0,0,0,0,0,1,1,0],
-  ],
-]
-
-function drawServices(ctx: CanvasRenderingContext2D, W: number, t: number, color: string) {
-  const fps = 6
-  const frameIdx = Math.floor(t / (1000 / fps)) % AGENT_FRAMES.length
-  const frame = AGENT_FRAMES[frameIdx]
-  const rows = frame.length
-  const cols = frame[0].length
-  const ps = Math.floor(W / cols)
-  const offX = Math.floor((W - cols * ps) / 2)
-  const offY = Math.floor((W - rows * ps) / 2)
-  const bobY = Math.sin(t * 0.012) * ps * 0.4
-
-  ctx.fillStyle = color
-  frame.forEach((row, r) => {
-    row.forEach((cell, c) => {
-      if (!cell) return
-      ctx.globalAlpha = 0.5 + 0.5 * Math.sin(t * 0.001 + r * 0.3)
-      ctx.fillRect(offX + c * ps, offY + r * ps + bobY, ps - 1, ps - 1)
-    })
-  })
 }
 
 function drawWorkflow(ctx: CanvasRenderingContext2D, W: number, t: number, color: string) {
@@ -196,7 +156,6 @@ export function PixelIcon({ type, size = 40, className }: PixelIconProps) {
 
       switch (type) {
         case "platform": drawPlatform(ctx, size, t, color); break
-        case "services": drawServices(ctx, size, t, color); break
         case "workflow": drawWorkflow(ctx, size, t, color); break
         case "hosting": drawHosting(ctx, size, t, color); break
         case "pricing": drawPricing(ctx, size, t, color); break

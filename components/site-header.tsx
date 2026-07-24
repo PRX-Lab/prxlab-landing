@@ -77,7 +77,7 @@ export function SiteHeader() {
             href="/"
             className="inline-flex items-center rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
           >
-            <Logo />
+            <Logo variant="orange" />
             <span className="sr-only">PRXLab — página inicial</span>
           </Link>
 
@@ -130,7 +130,7 @@ export function SiteHeader() {
               <SheetContent side="right" className="w-full max-w-xs">
                 <SheetHeader>
                   <SheetTitle className="text-left">
-                    <Logo />
+                    <Logo variant="orange" />
                   </SheetTitle>
                 </SheetHeader>
                 <nav aria-label="Navegação mobile" className="mt-2 flex flex-col gap-1 px-4">

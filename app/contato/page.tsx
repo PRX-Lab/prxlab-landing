@@ -1,5 +1,5 @@
 import type { Metadata } from "next"
-import { Mail, MessageCircle, Clock, MapPin } from "lucide-react"
+import { Mail, MessageCircle, Clock, MapPin, SendHorizontal, Search, CalendarCheck } from "lucide-react"
 import { PageHero } from "@/components/page-hero"
 import { Section, SectionHeading } from "@/components/section"
 import { Reveal } from "@/components/reveal"
@@ -16,6 +16,8 @@ export const metadata: Metadata = {
     "Fale com a PRXLab. Conte sobre seu projeto e receba uma proposta para landing pages, sistemas personalizados, produtos SaaS ou hospedagem.",
 }
 
+const whatsappDigits = siteConfig.whatsapp.replace(/\D/g, "")
+
 const channels = [
   {
     icon: Mail,
@@ -27,7 +29,8 @@ const channels = [
     icon: MessageCircle,
     label: "WhatsApp",
     value: siteConfig.whatsapp,
-    href: "#",
+    href: `https://wa.me/${whatsappDigits}`,
+    external: true,
   },
   {
     icon: Clock,
@@ -38,6 +41,24 @@ const channels = [
     icon: MapPin,
     label: "Atendimento",
     value: "Projetos remotos para todo o Brasil",
+  },
+]
+
+const nextSteps = [
+  {
+    icon: SendHorizontal,
+    title: "Você envia os detalhes",
+    desc: "Preencha o formulário ou fale direto por um dos canais de atendimento.",
+  },
+  {
+    icon: Search,
+    title: "Analisamos o projeto",
+    desc: `Avaliamos o escopo e retornamos — ${siteConfig.responseTime.toLowerCase()}.`,
+  },
+  {
+    icon: CalendarCheck,
+    title: "Alinhamos os próximos passos",
+    desc: "Conversamos sobre a proposta, o prazo e como o projeto vai andar.",
   },
 ]
 
@@ -66,42 +87,30 @@ export default function ContatoPage() {
             <div className="mt-8 grid gap-4 sm:grid-cols-2">
               {channels.map((c, i) => {
                 const Icon = c.icon
-                const content = (
-                  <BentoCard
-                    {...(c.href ? { as: "a", href: c.href } : {})}
-                    className="flex h-full items-start gap-4 p-5"
-                  >
-                    <span className="grid size-10 shrink-0 place-items-center rounded-xl border border-border bg-secondary text-primary">
-                      <Icon className="size-5" />
-                    </span>
-                    <div>
-                      <p className="text-xs font-medium uppercase tracking-wider text-muted-foreground">
-                        {c.label}
-                      </p>
-                      <p className="mt-1 text-sm font-medium text-foreground">{c.value}</p>
-                    </div>
-                  </BentoCard>
-                )
+                const linkProps = c.href
+                  ? { as: "a" as const, href: c.href, ...(c.external ? { target: "_blank", rel: "noopener noreferrer" } : {}) }
+                  : {}
                 return (
                   <Reveal key={c.label} delay={i * 70}>
-                    {content}
+                    <BentoCard {...linkProps} className="flex h-full items-start gap-4 p-5">
+                      <span className="grid size-10 shrink-0 place-items-center rounded-xl border border-border bg-secondary text-primary">
+                        <Icon className="size-5" />
+                      </span>
+                      <div>
+                        <p className="text-xs font-medium uppercase tracking-wider text-muted-foreground">
+                          {c.label}
+                        </p>
+                        <p className="mt-1 text-sm font-medium text-foreground">{c.value}</p>
+                      </div>
+                    </BentoCard>
                   </Reveal>
                 )
               })}
             </div>
-
-            <Reveal delay={200}>
-              <div className="mt-6 rounded-2xl border border-border bg-muted/40 p-5">
-                <p className="text-sm leading-relaxed text-muted-foreground">
-                  Os dados de contato acima são de exemplo e podem ser atualizados com as informações
-                  reais da empresa.
-                </p>
-              </div>
-            </Reveal>
           </div>
 
           <Reveal delay={120}>
-            <BentoCard className="p-6 sm:p-8">
+            <div>
               <RevealText as="h2" className="text-xl font-semibold text-foreground">
                 Solicitar orçamento
               </RevealText>
@@ -111,8 +120,33 @@ export default function ContatoPage() {
               <div className="mt-6">
                 <ContactForm />
               </div>
-            </BentoCard>
+            </div>
           </Reveal>
+        </div>
+      </Section>
+
+      <Section>
+        <Reveal>
+          <SectionHeading
+            eyebrow="O que acontece depois"
+            title="Três passos até a proposta."
+          />
+        </Reveal>
+        <div className="mt-12 grid gap-4 sm:grid-cols-3">
+          {nextSteps.map((step, i) => {
+            const Icon = step.icon
+            return (
+              <Reveal key={step.title} delay={i * 80}>
+                <BentoCard className="flex h-full flex-col items-center p-6 text-center">
+                  <span className="grid size-11 place-items-center rounded-xl border border-border bg-secondary text-primary">
+                    <Icon className="size-5" />
+                  </span>
+                  <h3 className="mt-4 text-base font-semibold text-foreground">{step.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{step.desc}</p>
+                </BentoCard>
+              </Reveal>
+            )
+          })}
         </div>
       </Section>
 
