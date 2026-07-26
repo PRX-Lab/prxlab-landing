@@ -92,7 +92,7 @@ export default function HospedagemPage() {
       <PageHero
         eyebrow="Desenvolvimento + hospedagem"
         title="Seu site atual não é responsivo, moderno ou fácil de atualizar?"
-        description="A gente refaz o seu site com as melhores tecnologias, boa performance e fácil manutenção — e ainda cuida da hospedagem na nossa própria infraestrutura, de bônus, para você não precisar se preocupar com mais esse detalhe."
+        description="A gente refaz o seu site com as melhores tecnologias, boa performance e fácil manutenção. Também cuidamos da hospedagem na nossa própria infraestrutura, de bônus, para você não precisar se preocupar com mais esse detalhe."
       >
         <Button asChild size="lg">
           <Link href="/contato">
@@ -110,7 +110,7 @@ export default function HospedagemPage() {
             className="mx-auto"
             eyebrow="Por que refazer com a gente"
             title="Um site novo, e a hospedagem já vem junto."
-            description="Se o seu site hoje não representa bem o seu negócio, recriamos do zero — e cuidamos também de colocar e manter tudo no ar."
+            description="Se o seu site hoje não representa bem o seu negócio, recriamos do zero e cuidamos também de colocar e manter tudo no ar."
           />
         </Reveal>
         <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">

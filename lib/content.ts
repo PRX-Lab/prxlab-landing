@@ -281,7 +281,7 @@ export const products: Product[] = [
     ],
     status: "Em produção",
     href: "https://finance-system.prxlab.app/login",
-    image: "/images/prx-finance-mockup.png",
+    image: "/images/finance-system.png",
   },
   {
     name: "Truco Online",
@@ -298,7 +298,7 @@ export const products: Product[] = [
     ],
     status: "Em produção",
     href: "https://truco.prxlab.app",
-    image: "/images/03.png",
+    image: "/images/truco.png",
   },
   {
     name: "ACID/C",
@@ -315,6 +315,6 @@ export const products: Product[] = [
     ],
     status: "Em produção",
     href: "https://acidc.com.br",
-    image: "/images/02.png",
+    image: "/images/acidc.png",
   },
 ]

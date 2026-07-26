@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { ArrowRight } from "lucide-react"
+import { ArrowRight, Check } from "lucide-react"
 import type React from "react"
 import { Button } from "@/components/ui/button"
 import { Section, SectionHeading, Eyebrow, Tag } from "@/components/section"
@@ -147,7 +147,7 @@ export default function HomePage() {
             </RevealText>
             <p className="mt-4 text-pretty text-base leading-relaxed text-muted-foreground sm:text-lg">
               Escolha o modelo conforme a autonomia que você precisa para gerenciar o conteúdo. Não
-              apresentamos preços — cada projeto recebe uma proposta.
+              apresentamos preços: cada projeto recebe uma proposta.
             </p>
           </Reveal>
           <div className="mt-12 grid gap-6 lg:grid-cols-3">
@@ -198,18 +198,19 @@ export default function HomePage() {
             </div>
           </Reveal>
           <Reveal delay={120}>
-            <BentoCard className="flex h-full flex-col justify-center p-6">
+            <BentoCard className="flex h-full flex-col p-6">
               <p className="text-xs font-semibold uppercase tracking-wider text-foreground">Exemplos de projetos</p>
-              <div className="mt-3 flex flex-wrap gap-1.5">
+              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                Alguns dos tipos de aplicação que já desenvolvemos para diferentes operações.
+              </p>
+              <ul className="mt-5 grid flex-1 auto-rows-min grid-cols-1 gap-x-4 gap-y-2.5 sm:grid-cols-2">
                 {systemExamples.map((ex) => (
-                  <span
-                    key={ex}
-                    className="rounded-full border border-border bg-secondary px-2.5 py-1 text-xs text-secondary-foreground"
-                  >
+                  <li key={ex} className="flex items-center gap-2 text-sm text-muted-foreground">
+                    <Check className="size-3.5 shrink-0 text-primary" />
                     {ex}
-                  </span>
+                  </li>
                 ))}
-              </div>
+              </ul>
             </BentoCard>
           </Reveal>
         </div>
@@ -254,7 +255,7 @@ export default function HomePage() {
             </RevealText>
             <p className="mt-5 text-base leading-relaxed text-muted-foreground">
               A PRXLab pode publicar e hospedar o seu projeto, reduzindo a complexidade técnica do dia a
-              dia — com monitoramento contínuo de disponibilidade.
+              dia, com monitoramento contínuo de disponibilidade.
             </p>
             <div className="mt-8">
               <Button asChild variant="outline">

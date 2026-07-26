@@ -13,7 +13,7 @@ export function SiteFooter() {
           <div className="lg:col-span-2">
             <Logo />
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-muted-foreground">
-              Desenvolvemos produtos digitais sob medida — de landing pages a sistemas SaaS — com
+              Desenvolvemos produtos digitais sob medida, de landing pages a sistemas SaaS, com
               hospedagem gerenciada e evolução contínua.
             </p>
             <div className="mt-6 flex items-center gap-2">

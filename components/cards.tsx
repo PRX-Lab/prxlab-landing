@@ -3,6 +3,7 @@ import { ArrowRight, Check, FileText, SlidersHorizontal, Sparkles, Star, type Lu
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { BentoCard } from "@/components/bento-card"
+import { ExpandableImage } from "@/components/expandable-image"
 import type { Service, LandingPlan, Product } from "@/lib/content"
 
 const LANDING_PLAN_ICONS: Record<string, LucideIcon> = {
@@ -111,11 +112,12 @@ export function LandingPlanCard({ plan }: { plan: LandingPlan }) {
 export function ProductCard({ product }: { product: Product }) {
   return (
     <BentoCard className="grid gap-6 p-6 lg:grid-cols-2 lg:items-center lg:gap-10 lg:p-8">
-      <div className="relative order-last aspect-4/3 overflow-hidden rounded-2xl border border-border bg-secondary lg:order-first lg:aspect-auto lg:h-96">
-        <img
+      <div className="relative order-last overflow-hidden rounded-2xl border border-border bg-secondary lg:order-first">
+        <ExpandableImage
           src={product.image || "/placeholder.svg"}
           alt={`Interface do ${product.name}`}
-          className="h-full w-full object-cover"
+          className="h-auto"
+          imgClassName="h-auto w-full object-contain"
         />
       </div>
       <div className="flex flex-col justify-center">
@@ -136,13 +138,13 @@ export function ProductCard({ product }: { product: Product }) {
         </div>
 
         <div className="mt-auto flex flex-col gap-3 pt-7 sm:flex-row">
-          <Button asChild>
+          <Button asChild className="flex-1">
             <a href={product.href} target="_blank" rel="noopener noreferrer">
               Acessar produto
               <ArrowRight className="size-4" />
             </a>
           </Button>
-          <Button asChild variant="outline">
+          <Button asChild variant="outline" className="flex-1">
             <Link href="/contato">Desenvolver algo semelhante</Link>
           </Button>
         </div>

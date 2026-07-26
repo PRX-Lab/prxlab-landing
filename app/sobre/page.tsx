@@ -57,6 +57,23 @@ export default function SobrePage() {
 
       <Section className="prx-wash-muted">
         <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
+          <div className="grid gap-4 sm:grid-cols-2">
+            {values.map((v, i) => {
+              const Icon = v.icon
+              return (
+                <Reveal key={v.title} delay={i * 80}>
+                  <BentoCard className="flex h-full flex-col p-6">
+                    <span className="grid size-11 place-items-center rounded-xl border border-border bg-secondary text-primary">
+                      <Icon className="size-5" />
+                    </span>
+                    <h3 className="mt-4 text-base font-semibold text-foreground">{v.title}</h3>
+                    <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{v.desc}</p>
+                  </BentoCard>
+                </Reveal>
+              )
+            })}
+          </div>
+
           <Reveal>
             <div>
               <SectionHeading
@@ -80,23 +97,6 @@ export default function SobrePage() {
               </div>
             </div>
           </Reveal>
-
-          <div className="grid gap-4 sm:grid-cols-2">
-            {values.map((v, i) => {
-              const Icon = v.icon
-              return (
-                <Reveal key={v.title} delay={i * 80}>
-                  <BentoCard className="flex h-full flex-col p-6">
-                    <span className="grid size-11 place-items-center rounded-xl border border-border bg-secondary text-primary">
-                      <Icon className="size-5" />
-                    </span>
-                    <h3 className="mt-4 text-base font-semibold text-foreground">{v.title}</h3>
-                    <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{v.desc}</p>
-                  </BentoCard>
-                </Reveal>
-              )
-            })}
-          </div>
         </div>
       </Section>
 

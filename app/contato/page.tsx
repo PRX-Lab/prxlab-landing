@@ -53,7 +53,7 @@ const nextSteps = [
   {
     icon: Search,
     title: "Analisamos o projeto",
-    desc: `Avaliamos o escopo e retornamos — ${siteConfig.responseTime.toLowerCase()}.`,
+    desc: `Avaliamos o escopo do seu projeto. ${siteConfig.responseTime}.`,
   },
   {
     icon: CalendarCheck,
@@ -84,7 +84,7 @@ export default function ContatoPage() {
               </p>
             </Reveal>
 
-            <div className="mt-8 grid gap-4 sm:grid-cols-2">
+            <div className="mt-8 grid gap-3 sm:grid-cols-2">
               {channels.map((c, i) => {
                 const Icon = c.icon
                 const linkProps = c.href
@@ -92,8 +92,8 @@ export default function ContatoPage() {
                   : {}
                 return (
                   <Reveal key={c.label} delay={i * 70}>
-                    <BentoCard {...linkProps} className="flex h-full items-start gap-4 p-5">
-                      <span className="grid size-10 shrink-0 place-items-center rounded-xl border border-border bg-secondary text-primary">
+                    <BentoCard {...linkProps} className="flex h-full items-center gap-4 p-5">
+                      <span className="grid size-11 shrink-0 place-items-center rounded-xl border border-border bg-secondary text-primary">
                         <Icon className="size-5" />
                       </span>
                       <div>
@@ -106,6 +106,30 @@ export default function ContatoPage() {
                   </Reveal>
                 )
               })}
+            </div>
+
+            <div className="mt-10 border-t border-border pt-8">
+              <RevealText as="h3" className="text-xs font-semibold uppercase tracking-wider text-foreground">
+                O que acontece depois
+              </RevealText>
+              <div className="mt-5 space-y-5">
+                {nextSteps.map((step, i) => {
+                  const Icon = step.icon
+                  return (
+                    <Reveal key={step.title} delay={i * 70}>
+                      <div className="flex gap-4">
+                        <span className="grid size-9 shrink-0 place-items-center rounded-full border border-border bg-secondary text-primary">
+                          <Icon className="size-4" />
+                        </span>
+                        <div>
+                          <h4 className="text-sm font-semibold text-foreground">{step.title}</h4>
+                          <p className="mt-1 text-sm leading-relaxed text-muted-foreground">{step.desc}</p>
+                        </div>
+                      </div>
+                    </Reveal>
+                  )
+                })}
+              </div>
             </div>
           </div>
 
@@ -122,31 +146,6 @@ export default function ContatoPage() {
               </div>
             </div>
           </Reveal>
-        </div>
-      </Section>
-
-      <Section>
-        <Reveal>
-          <SectionHeading
-            eyebrow="O que acontece depois"
-            title="Três passos até a proposta."
-          />
-        </Reveal>
-        <div className="mt-12 grid gap-4 sm:grid-cols-3">
-          {nextSteps.map((step, i) => {
-            const Icon = step.icon
-            return (
-              <Reveal key={step.title} delay={i * 80}>
-                <BentoCard className="flex h-full flex-col items-center p-6 text-center">
-                  <span className="grid size-11 place-items-center rounded-xl border border-border bg-secondary text-primary">
-                    <Icon className="size-5" />
-                  </span>
-                  <h3 className="mt-4 text-base font-semibold text-foreground">{step.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{step.desc}</p>
-                </BentoCard>
-              </Reveal>
-            )
-          })}
         </div>
       </Section>
 

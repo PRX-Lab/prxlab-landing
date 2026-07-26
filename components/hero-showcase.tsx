@@ -4,27 +4,10 @@ import { useEffect, useRef, useState } from "react"
 import { ArrowUpRight } from "lucide-react"
 
 // A hero backdrop built from the product itself instead of abstract art:
-// a small collage of floating UI cards — a code snippet, a financial
-// dashboard, a SaaS usage panel and a web-page mockup — echoing the four
-// things PRXLab actually ships. Cards drift gently and tilt toward the
-// pointer for a bit of depth; everything is plain markup, no generated art.
-
-function useCountUp(end: number, duration = 1600) {
-  const [value, setValue] = useState(0)
-  useEffect(() => {
-    let raf = 0
-    const start = performance.now()
-    const tick = (now: number) => {
-      const p = Math.min((now - start) / duration, 1)
-      const eased = 1 - Math.pow(1 - p, 3)
-      setValue(end * eased)
-      if (p < 1) raf = requestAnimationFrame(tick)
-    }
-    raf = requestAnimationFrame(tick)
-    return () => cancelAnimationFrame(raf)
-  }, [end, duration])
-  return value
-}
+// a small collage of floating UI cards — a code snippet, a services
+// overview, a portfolio summary and a web-page mockup — echoing what
+// PRXLab actually ships. Cards drift gently and tilt toward the pointer
+// for a bit of depth; everything is plain markup, no generated art.
 
 function WindowChrome({ label }: { label: string }) {
   return (
@@ -40,11 +23,13 @@ function WindowChrome({ label }: { label: string }) {
 function CodeCard() {
   return (
     <div className="w-72 overflow-hidden rounded-xl border border-border bg-card/95 shadow-xl shadow-black/5 backdrop-blur-md">
-      <WindowChrome label="financeiro.service.ts" />
+      <WindowChrome label="projeto.prxlab.ts" />
       <div className="space-y-1 p-4 font-mono text-[11px] leading-relaxed">
-        <div><span className="text-primary">export function</span> <span className="text-foreground">calcularSaldo</span><span className="text-muted-foreground">(contas) {"{"}</span></div>
-        <div className="pl-4"><span className="text-primary">return</span> <span className="text-foreground">contas</span><span className="text-muted-foreground">.reduce((acc, c) {"=>"}</span></div>
-        <div className="pl-8"><span className="text-foreground">acc</span> <span className="text-muted-foreground">+</span> <span className="text-foreground">c.valor</span><span className="text-muted-foreground">, 0)</span></div>
+        <div><span className="text-primary">export const</span> <span className="text-foreground">projeto</span> <span className="text-muted-foreground">= {"{"}</span></div>
+        <div className="pl-4"><span className="text-foreground">tecnologia</span><span className="text-muted-foreground">:</span> <span className="text-primary">"moderna"</span><span className="text-muted-foreground">,</span></div>
+        <div className="pl-4"><span className="text-foreground">desenvolvimento</span><span className="text-muted-foreground">:</span> <span className="text-primary">"sob medida"</span><span className="text-muted-foreground">,</span></div>
+        <div className="pl-4"><span className="text-foreground">deploy</span><span className="text-muted-foreground">:</span> <span className="text-primary">"cloud"</span><span className="text-muted-foreground">,</span></div>
+        <div className="pl-4"><span className="text-foreground">status</span><span className="text-muted-foreground">:</span> <span className="text-primary">"online"</span></div>
         <div>
           <span className="text-muted-foreground">{"}"}</span>
           <span className="prx-blink ml-1 inline-block h-3 w-1.5 translate-y-0.5 bg-primary align-middle" />
@@ -54,22 +39,27 @@ function CodeCard() {
   )
 }
 
-function FinanceCard() {
-  const value = useCountUp(128450.32)
-  const formatted = value.toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 })
+const SERVICE_LIST = ["Landing Pages", "Sistemas Personalizados", "Produtos SaaS", "Hospedagem Gerenciada"]
 
+function ServicesCard() {
   return (
     <div className="w-64 overflow-hidden rounded-xl border border-border bg-card/95 p-4 shadow-xl shadow-black/5 backdrop-blur-md">
-      <div className="flex items-center justify-between">
-        <p className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground/70">Saldo em contas</p>
-        <span className="inline-flex items-center gap-0.5 rounded-full bg-accent px-1.5 py-0.5 text-[10px] font-medium text-accent-foreground">
+      <p className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground/70">Soluções desenvolvidas</p>
+      <ul className="mt-2 space-y-1">
+        {SERVICE_LIST.map((item) => (
+          <li key={item} className="flex items-center gap-1.5 text-xs text-foreground">
+            <span className="size-1 shrink-0 rounded-full bg-primary" />
+            {item}
+          </li>
+        ))}
+      </ul>
+      <div className="mt-3 flex items-center justify-between gap-2 border-t border-border pt-2.5">
+        <p className="text-xs font-medium text-foreground">9 projetos desenvolvidos</p>
+        <span className="inline-flex shrink-0 items-center gap-0.5 whitespace-nowrap rounded-full bg-accent px-1.5 py-0.5 text-[9px] font-medium text-accent-foreground">
           <ArrowUpRight className="size-3" />
-          12,4%
+          Novos em construção
         </span>
       </div>
-      <p className="mt-1.5 text-xl font-semibold tracking-tight text-foreground">
-        R$ {formatted}
-      </p>
       <svg viewBox="0 0 120 32" className="mt-2 h-8 w-full overflow-visible">
         <path
           d="M2 24 L18 20 L34 22 L50 12 L66 15 L82 6 L98 9 L118 2"
@@ -85,19 +75,18 @@ function FinanceCard() {
   )
 }
 
-function SaasCard() {
+function PortfolioCard() {
   return (
-    <div
-      className="w-56 overflow-hidden rounded-xl border border-border bg-card/95 p-4 shadow-xl shadow-black/5 backdrop-blur-md"
-      style={{ ["--prx-progress-to" as string]: "62%" }}
-    >
-      <div className="flex items-center justify-between">
-        <p className="text-sm font-semibold text-foreground">Plano Pro</p>
-        <span className="rounded-full bg-secondary px-2 py-0.5 text-[10px] font-medium text-secondary-foreground">Ativo</span>
-      </div>
-      <p className="mt-1 font-mono text-[10px] text-muted-foreground">3.100 / 5.000 requisições</p>
-      <div className="mt-2.5 h-1.5 w-full overflow-hidden rounded-full bg-secondary">
-        <div className="prx-progress-fill h-full rounded-full bg-primary" />
+    <div className="w-56 overflow-hidden rounded-xl border border-border bg-card/95 p-4 shadow-xl shadow-black/5 backdrop-blur-md">
+      <p className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground/70">Projetos desenvolvidos</p>
+      <p className="mt-1.5 text-xl font-semibold tracking-tight text-foreground">9 projetos</p>
+      <p className="mt-1 text-xs text-muted-foreground">Sites, sistemas e produtos digitais</p>
+      <div className="mt-2.5 flex items-center gap-1.5 border-t border-border pt-2.5">
+        <span className="relative flex size-1.5">
+          <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-success/60" />
+          <span className="relative inline-flex size-1.5 rounded-full bg-success" />
+        </span>
+        <span className="font-mono text-[10px] text-muted-foreground">Portfólio atualizado</span>
       </div>
     </div>
   )
@@ -221,7 +210,7 @@ const STATUS_MESSAGES = [
   "Backup automático concluído",
   "Certificado SSL renovado",
   "Novo relatório financeiro gerado",
-  "Ambiente monitorado — sem incidentes",
+  "Ambiente monitorado sem incidentes",
 ]
 
 function StatusToast() {
@@ -261,8 +250,8 @@ function StatusToast() {
 
 const CARDS = [
   { Card: CodeCard, className: "right-[6%] top-[12%]", float: "prx-float-a", depth: 22, delay: 0 },
-  { Card: FinanceCard, className: "right-[26%] top-[42%] hidden sm:block", float: "prx-float-b", depth: 34, delay: 120 },
-  { Card: SaasCard, className: "left-[8%] top-[10%] hidden lg:block", float: "prx-float-c", depth: 14, delay: 200 },
+  { Card: ServicesCard, className: "right-[26%] top-[42%] hidden sm:block", float: "prx-float-b", depth: 34, delay: 120 },
+  { Card: PortfolioCard, className: "left-[8%] top-[10%] hidden lg:block", float: "prx-float-c", depth: 14, delay: 200 },
   { Card: BrowserCard, className: "right-[2%] bottom-[16%] hidden md:block", float: "prx-float-d", depth: 28, delay: 60 },
   { Card: ChatCard, className: "left-[26%] top-[38%] hidden lg:block", float: "prx-float-b", depth: 18, delay: 160 },
   { Card: UptimeBadge, className: "right-[44%] top-[8%] hidden xl:block", float: "prx-float-c", depth: 12, delay: 240 },

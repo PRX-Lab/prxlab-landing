@@ -180,55 +180,59 @@ export default function ServicosPage() {
               {group.description}
             </h2>
           </Reveal>
-          <div className="mt-8 grid gap-5 md:grid-cols-2">
+          <div className="mt-8 grid gap-4 md:grid-cols-2">
             {group.services.map((service, i) => {
               const Icon = service.icon
               return (
-                <Reveal key={service.title} delay={(i % 2) * 80}>
-                  <BentoCard as="article" className="flex h-full flex-col overflow-hidden p-0">
-                    <div className="h-1 bg-primary" aria-hidden="true" />
-                    <div className="flex h-full flex-col p-6 sm:p-7">
-                      <div className="flex items-center gap-3">
-                        <span className="grid size-11 shrink-0 place-items-center rounded-xl bg-primary/10 text-primary">
-                          <Icon className="size-5" />
-                        </span>
-                        <h3 className="flex min-h-11 items-center text-lg font-semibold text-foreground">
-                          {service.title}
-                        </h3>
-                      </div>
+                <Reveal
+                  key={service.title}
+                  delay={(i % 2) * 80}
+                  className="md:grid md:grid-rows-subgrid md:row-[span_6]"
+                >
+                  <BentoCard
+                    as="article"
+                    wrapperClassName="md:grid md:grid-rows-subgrid md:row-[span_6]"
+                    cardClassName="border-t-4 border-primary md:grid md:grid-rows-subgrid md:row-[span_6]"
+                    className="grid gap-2.5 p-4 sm:p-5 md:grid-rows-subgrid md:row-[span_6]"
+                  >
+                    <div className="flex items-center gap-2.5">
+                      <span className="grid size-9 shrink-0 place-items-center rounded-xl bg-primary/10 text-primary">
+                        <Icon className="size-4" />
+                      </span>
+                      <h3 className="text-base font-semibold text-foreground">{service.title}</h3>
+                    </div>
 
-                      <p className="mt-4 min-h-11 text-sm leading-relaxed text-muted-foreground">{service.problem}</p>
+                    <p className="line-clamp-2 text-sm leading-relaxed text-muted-foreground">{service.problem}</p>
 
-                      <div className="mt-3 flex min-h-10 items-start gap-2 text-sm text-muted-foreground">
-                        <Users className="mt-0.5 size-4 shrink-0" />
-                        <span>{service.audience}</span>
-                      </div>
+                    <div className="flex items-start gap-2 text-xs text-muted-foreground">
+                      <Users className="mt-0.5 size-3.5 shrink-0" />
+                      <span className="line-clamp-1">{service.audience}</span>
+                    </div>
 
-                      <div className="mt-5 flex min-h-14 flex-wrap gap-2">
-                        {service.possibilities.map((p) => (
-                          <span
-                            key={p}
-                            className="rounded-full bg-secondary px-3 py-1 text-xs font-medium text-secondary-foreground"
-                          >
-                            {p}
-                          </span>
-                        ))}
-                      </div>
-
-                      <div className="mt-5 flex items-start gap-2 rounded-xl bg-primary/10 p-3 text-sm font-medium text-primary">
-                        <CheckCircle2 className="mt-0.5 size-4 shrink-0" />
-                        <span>{service.benefit}</span>
-                      </div>
-
-                      <div className="mt-auto pt-6">
-                        <Link
-                          href="/contato"
-                          className="inline-flex items-center gap-1.5 text-sm font-medium text-foreground hover:text-primary"
+                    <div className="flex flex-wrap content-start gap-1.5">
+                      {service.possibilities.map((p) => (
+                        <span
+                          key={p}
+                          className="shrink-0 whitespace-nowrap rounded-full bg-secondary px-2.5 py-0.5 text-xs font-medium text-secondary-foreground"
                         >
-                          Solicitar orçamento
-                          <ArrowRight className="size-4" />
-                        </Link>
-                      </div>
+                          {p}
+                        </span>
+                      ))}
+                    </div>
+
+                    <div className="flex items-start gap-2 rounded-xl bg-primary/10 p-2 text-sm font-medium text-primary">
+                      <CheckCircle2 className="mt-0.5 size-4 shrink-0" />
+                      <span>{service.benefit}</span>
+                    </div>
+
+                    <div className="flex items-end justify-end">
+                      <Link
+                        href="/contato"
+                        className="inline-flex items-center gap-1.5 text-sm font-medium text-foreground hover:text-primary"
+                      >
+                        Solicitar orçamento
+                        <ArrowRight className="size-4" />
+                      </Link>
                     </div>
                   </BentoCard>
                 </Reveal>

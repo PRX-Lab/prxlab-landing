@@ -7,6 +7,7 @@ type BentoCardProps = {
   children: React.ReactNode
   className?: string
   cardClassName?: string
+  wrapperClassName?: string
   as?: React.ElementType
   badge?: React.ReactNode
   [key: string]: unknown
@@ -19,10 +20,14 @@ type BentoCardProps = {
 // chrome (border/background/shadow) only, e.g. for a highlighted variant.
 // `badge` renders centered on the card's own top border (outside the card's
 // own overflow-hidden box), for the classic "Recomendado" ribbon look.
+// `wrapperClassName` reaches the outermost positioning div, only needed when
+// a caller must extend a CSS Grid subgrid through this component (e.g. to
+// align row-by-row with a sibling card).
 export function BentoCard({
   children,
   className,
   cardClassName,
+  wrapperClassName,
   as: Tag = "div",
   badge,
   ...props
@@ -35,7 +40,7 @@ export function BentoCard({
   }
 
   return (
-    <div className="relative h-full">
+    <div className={cn("relative h-full", wrapperClassName)}>
       {badge && (
         <div className="pointer-events-none absolute inset-x-0 top-0 z-20 flex justify-center">
           <div className="pointer-events-auto -translate-y-1/2">{badge}</div>

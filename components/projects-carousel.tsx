@@ -9,9 +9,14 @@ import { ProductCard } from "@/components/cards"
 import { Reveal } from "@/components/reveal"
 import type { Product } from "@/lib/content"
 
+const AUTOPLAY_DELAY = 6000
+
 export function ProjectsCarousel({ products }: { products: Product[] }) {
   const [api, setApi] = React.useState<CarouselApi>()
   const [current, setCurrent] = React.useState(0)
+  const [paused, setPaused] = React.useState(false)
+  const [inView, setInView] = React.useState(false)
+  const rootRef = React.useRef<HTMLDivElement>(null)
 
   React.useEffect(() => {
     if (!api) return
@@ -19,8 +24,22 @@ export function ProjectsCarousel({ products }: { products: Product[] }) {
     api.on("select", () => setCurrent(api.selectedScrollSnap()))
   }, [api])
 
+  React.useEffect(() => {
+    const el = rootRef.current
+    if (!el) return
+    const obs = new IntersectionObserver(([entry]) => setInView(entry.isIntersecting), { threshold: 0.4 })
+    obs.observe(el)
+    return () => obs.disconnect()
+  }, [])
+
+  React.useEffect(() => {
+    if (!api || products.length <= 1 || paused || !inView) return
+    const id = setInterval(() => api.scrollNext(), AUTOPLAY_DELAY)
+    return () => clearInterval(id)
+  }, [api, products.length, paused, inView])
+
   return (
-    <div>
+    <div ref={rootRef} onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)}>
       <Carousel setApi={setApi} opts={{ align: "start", loop: true }}>
         <CarouselContent>
           {products.map((product) => (

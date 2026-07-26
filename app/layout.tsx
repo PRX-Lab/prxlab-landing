@@ -23,8 +23,8 @@ const courierPrime = Courier_Prime({
 
 export const metadata: Metadata = {
   title: {
-    default: "PRXLab — Desenvolvimento de produtos digitais sob medida",
-    template: "%s — PRXLab",
+    default: "PRXLab | Desenvolvimento de produtos digitais sob medida",
+    template: "%s | PRXLab",
   },
   description:
     "A PRXLab desenvolve landing pages, sistemas personalizados, produtos SaaS e hospedagem gerenciada para transformar ideias e processos em soluções reais, preparadas para crescer.",
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
     icon: "/prx-icon-organge.svg",
   },
   openGraph: {
-    title: "PRXLab — Desenvolvimento de produtos digitais sob medida",
+    title: "PRXLab | Desenvolvimento de produtos digitais sob medida",
     description:
       "Landing pages, sistemas personalizados, produtos SaaS e hospedagem gerenciada para transformar ideias e processos em soluções reais.",
     type: "website",

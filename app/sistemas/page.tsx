@@ -61,7 +61,7 @@ export default function SistemasPage() {
       <PageHero
         eyebrow="Sistemas e SaaS"
         title="Sistemas desenvolvidos para o seu processo, não o contrário."
-        description="A PRXLab desenvolve plataformas sob medida para diferentes modelos de negócio, operações e necessidades — de ferramentas internas a produtos por assinatura."
+        description="A PRXLab desenvolve plataformas sob medida para diferentes modelos de negócio, operações e necessidades, de ferramentas internas a produtos por assinatura."
       >
         <Button asChild size="lg">
           <Link href="/contato">
@@ -79,7 +79,7 @@ export default function SistemasPage() {
             className="mx-auto"
             eyebrow="Categorias"
             title="Projetos diversos, construídos sob medida."
-            description="Trabalhamos com diferentes tipos de aplicação. A categoria é apenas um ponto de partida — cada projeto é definido conforme a sua necessidade."
+            description="Trabalhamos com diferentes tipos de aplicação. A categoria é apenas um ponto de partida: cada projeto é definido conforme a sua necessidade."
           />
         </Reveal>
         <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -149,7 +149,7 @@ export default function SistemasPage() {
                 {examples.map((ex) => (
                   <span
                     key={ex}
-                    className="rounded-full border border-border bg-secondary px-3 py-1.5 text-sm text-secondary-foreground"
+                    className="shrink-0 whitespace-nowrap rounded-full border border-border bg-secondary px-3 py-1.5 text-sm text-secondary-foreground"
                   >
                     {ex}
                   </span>

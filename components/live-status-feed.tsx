@@ -16,7 +16,7 @@ const EVENTS = [
   "Certificado SSL renovado automaticamente",
   "Backup diário concluído com sucesso",
   "Deploy publicado em produção",
-  "Monitoramento de uptime — sem incidentes",
+  "Monitoramento de uptime sem incidentes",
   "Atualização de infraestrutura aplicada",
   "Verificação de segurança concluída",
   "Sincronização de ambiente concluída",
@@ -61,7 +61,7 @@ const SEED_ROWS: Row[] = [
   { key: 0, host: "app.cliente-a.prxlab.app", event: "Backup diário concluído com sucesso", status: STATUSES[0], progress: 100 },
   { key: 1, host: "painel.cliente-b.prxlab.app", event: "Certificado SSL renovado automaticamente", status: STATUSES[0], progress: 100 },
   { key: 2, host: "financeiro.cliente-c.prxlab.app", event: "Deploy publicado em produção", status: STATUSES[4], progress: 72 },
-  { key: 3, host: "loja.cliente-d.prxlab.app", event: "Monitoramento de uptime — sem incidentes", status: STATUSES[0], progress: 100 },
+  { key: 3, host: "loja.cliente-d.prxlab.app", event: "Monitoramento de uptime sem incidentes", status: STATUSES[0], progress: 100 },
   { key: 4, host: "sistema.cliente-f.prxlab.app", event: "Verificação de disponibilidade concluída", status: STATUSES[0], progress: 100 },
 ]
 

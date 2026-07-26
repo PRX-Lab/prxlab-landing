@@ -31,13 +31,13 @@ export function CtaSection({
               {description}
             </p>
             <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
-              <Button asChild size="lg">
+              <Button asChild size="lg" className="w-full sm:w-auto sm:flex-1">
                 <Link href="/contato">
                   {primaryLabel}
                   <ArrowRight className="size-4" />
                 </Link>
               </Button>
-              <Button asChild size="lg" variant="outline">
+              <Button asChild size="lg" variant="outline" className="w-full sm:w-auto sm:flex-1">
                 <Link href="/contato">{secondaryLabel}</Link>
               </Button>
             </div>

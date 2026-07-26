@@ -51,8 +51,11 @@ export function SiteHeader() {
   const [servicesOpen, setServicesOpen] = React.useState(false)
   const closeTimer = React.useRef<ReturnType<typeof setTimeout> | undefined>(undefined)
 
-  const isActive = (href: string) =>
-    href === "/" ? pathname === "/" : pathname.startsWith(href)
+  const isActive = (href: string) => {
+    if (href === "/") return pathname === "/"
+    if (href === "/servicos") return SERVICE_LINKS.some((s) => pathname.startsWith(s.href))
+    return pathname.startsWith(href)
+  }
 
   const openServices = () => {
     if (closeTimer.current) clearTimeout(closeTimer.current)
@@ -78,7 +81,7 @@ export function SiteHeader() {
             className="inline-flex items-center rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
           >
             <Logo variant="orange" />
-            <span className="sr-only">PRXLab — página inicial</span>
+            <span className="sr-only">Página inicial da PRXLab</span>
           </Link>
 
           <div className="hidden items-center gap-6 lg:flex">
